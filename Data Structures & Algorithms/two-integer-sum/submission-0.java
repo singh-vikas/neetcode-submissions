@@ -1,22 +1,28 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        if (nums.length == 2)
-            return new int[] {0, 1};
 
-        // Dic Remainder and index
-        Map<Integer, Integer> dic = new HashMap<>();
+     Map<Integer, Integer> visited = new HashMap<Integer, Integer>();
 
-        for (int i = 0; i < nums.length; i++) {
+     for (int i=0 ; i < nums.length; i++) {
 
-             int value = nums[i]; // 3
-             int rem = target - value; //4
-             
-            if (dic.containsKey(rem))
-                return new int[] {dic.get(rem), i};  //4 and 3index
+         int c = target - nums[i];
 
-            dic.put(value, i);  // 4 and 3 index
-        }
-
-        return new int[] {-1};
+          if(visited.containsKey(c))
+             return new int[]{visited.get(c), i}; 
+         
+         visited.put(nums[i], i);    
+     }
+  
+     return new int[]{-1,-1};
     }
 }
+
+
+// 3+4=7
+//  7 - 3 -> 4
+
+//n2 and no extra storage
+//
+
+
+
